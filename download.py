@@ -35,7 +35,7 @@ if __name__ == '__main__':
         with open("video" + str(i) + ".mp4", "wb") as out:
             out.write(video_bytes)
 
-    # json.dumps(api.get_data(url="https://www.tiktok.com/@gordonramsayofficial/video/7028265743003290927?is_copy_url=1&is_from_webapp=v1"))
+    # json.dumps(api.get_data(url=""))
     # for video in user_videos:  
     #     videoJson = api.get_tiktok_by_url()
     # print(videoJson['itemInfo']['itemStruct']['stats']['diggCount'])
