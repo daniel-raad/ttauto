@@ -12,13 +12,6 @@ if __name__ == '__main__':
     # need to pass it to methods you want to download
     device_id = api.generate_device_id()
 
-
-
-    ## filter based on the most liked videos
-    ## grab all the videos by username and then check the most liked videos
-
-
-    # trending = api.by_trending(custom_device_id=device_id)
     user_videos = api.by_username(username, 10)
     like_list = [] 
     for video in user_videos:
@@ -41,9 +34,3 @@ if __name__ == '__main__':
     #     videoJson = api.get_tiktok_by_url()
     # print(videoJson['itemInfo']['itemStruct']['stats']['diggCount'])
     # print(videoJson['itemInfo']['itemStruct']['id'])
-
-    # # Below is if the method used if you have the full tiktok object
-    # for i in range(1,4):
-    #     video_bytes = api.get_video_by_tiktok(user_videos[i], custom_device_id=device_id)
-    #     with open("video" + str(i) + ".mp4", "wb") as out:
-    #         out.write(video_bytes)
