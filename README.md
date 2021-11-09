@@ -10,3 +10,8 @@ Steps:
 
 
 This will be a fully automated journey - perhaps even creating logos from automation / generative art 
+
+
+Updates: 
+- can now filter by likes on a particular user 
+- need to filter by tag 
