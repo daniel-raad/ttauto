@@ -4,6 +4,12 @@ from datetime import datetime
 import json
 import operator
 
+def filter_by_username(username, number_of_history, number_of_most_liked):
+    return 0 
+
+def filter_by_tag(tag, number_of_history, number_of_most_liked): 
+    return 0 
+
 if __name__ == '__main__':
     api = TikTokApi.get_instance()
     print(api)
