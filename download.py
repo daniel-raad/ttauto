@@ -32,7 +32,7 @@ def filter_by(username=None, tag=None, user_interaction='diggCount', number_of_h
 def download_videos(video_list, device_id):
     for i, video in enumerate(video_list):
         video_bytes = api.get_video_by_tiktok(video, custom_device_id=device_id)
-        with open("video" + str(i) + ".mp4", "wb") as out:
+        with open("./videos/video" + str(i) + ".mp4", "wb") as out:
             out.write(video_bytes)
 
 
