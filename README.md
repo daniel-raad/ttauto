@@ -15,7 +15,8 @@ This will be a fully automated journey - perhaps even creating logos from automa
 
 full automation for the video downloads
 Need to automate; 
-- merging 
+- merging x completed 
+  - need to fix bugs 
 - uploading 
 - title 
 - thumbnail
