@@ -45,8 +45,8 @@ if __name__ == '__main__':
     parser.add_argument('-t', "--hash_tag", type=str)
     parser.add_argument('-u', '--user_name', type=str)  
     parser.add_argument('-i', '--interaction_type', type=str)
-    parser.add_argument('-h', '--history', type=int)
-    parser.add_argument('m', '--most_interacted', type=int)
+    parser.add_argument('-n', '--number_history', type=int)
+    parser.add_argument('-m', '--most_interacted', type=int)
     args = parser.parse_args() 
 
     api = TikTokApi.get_instance()
