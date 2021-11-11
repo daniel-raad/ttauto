@@ -3,6 +3,8 @@ from TikTokApi import TikTokApi
 from datetime import datetime 
 import json
 import operator
+import argparse
+
 
 def filter_by(username=None, tag=None, user_interaction='diggCount', number_of_history=10, number_of_most_interacted=5):
 
@@ -38,8 +40,16 @@ def download_videos(video_list, device_id):
 
 
 if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser(description='Youtube Automation Program')
+    parser.add_argument('-t', "--hash_tag", type=str)
+    parser.add_argument('-u', '--user_name', type=str)  
+    parser.add_argument('-i', '--interaction_type', type=str)
+    parser.add_argument('-h', '--history', type=int)
+    parser.add_argument('m', '--most_interacted', type=int)
+    args = parser.parse_args() 
+
     api = TikTokApi.get_instance()
-    username = "emilymariko"
     device_id = api.generate_device_id()
-    download_videos(filter_by(username=username), device_id)
+    download_videos(filter_by(username=args.user_name, tag=args.hash_tag), device_id)
 
