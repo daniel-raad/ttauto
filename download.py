@@ -4,6 +4,7 @@ from datetime import datetime
 import json
 import operator
 import argparse
+import subprocess
 
 
 def filter_by(username=None, tag=None, user_interaction='diggCount', number_of_history=10, number_of_most_interacted=5):
@@ -36,8 +37,8 @@ def download_videos(video_list, device_id):
             out.write(video_bytes)
 
 
-
-
+def concat_videos(): 
+    subprocess.call('./videos/concatenate.sh')
 
 if __name__ == '__main__':
 
@@ -52,4 +53,5 @@ if __name__ == '__main__':
     api = TikTokApi.get_instance()
     device_id = api.generate_device_id()
     download_videos(filter_by(username=args.user_name, tag=args.hash_tag), device_id)
+    concat_videos()
 
