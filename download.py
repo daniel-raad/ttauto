@@ -8,7 +8,6 @@ import subprocess
 
 
 def filter_by(username=None, tag=None, user_interaction='diggCount', number_of_history=10, number_of_most_interacted=5):
-
     if username is not None: 
         user_videos = api.by_username(username, number_of_history)
     else: 
@@ -21,6 +20,7 @@ def filter_by(username=None, tag=None, user_interaction='diggCount', number_of_h
     enumerate_object = enumerate(interaction_list) 
     sorted_pairs = sorted(enumerate_object, key=operator.itemgetter(1), reverse=True)
     index_list = [index for index, element in sorted_pairs]
+    
     most_interacted_videos = [] 
     for video_index in index_list[0:number_of_most_interacted]:
         most_interacted_videos.append(user_videos[video_index])
@@ -52,6 +52,7 @@ if __name__ == '__main__':
 
     api = TikTokApi.get_instance()
     device_id = api.generate_device_id()
+
     download_videos(filter_by(username=args.user_name, tag=args.hash_tag), device_id)
     concat_videos()
 
