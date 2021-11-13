@@ -5,6 +5,7 @@ import json
 import operator
 import argparse
 import subprocess
+import time 
 
 
 def filter_by(username=None, tag=None, user_interaction='diggCount', number_of_history=10, number_of_most_interacted=5):
@@ -54,5 +55,6 @@ if __name__ == '__main__':
     device_id = api.generate_device_id()
 
     download_videos(filter_by(username=args.user_name, tag=args.hash_tag), device_id)
+    time.sleep(3) 
     concat_videos()
 
