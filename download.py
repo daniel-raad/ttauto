@@ -1,14 +1,7 @@
-# Input a hard coded tag and take the first 10 videos from TikTok 
-from TikTokApi import TikTokApi
-from datetime import datetime 
-import json
 import operator
-import argparse
-import subprocess
-import time 
 
 
-def filter_by(username=None, tag=None, user_interaction='diggCount', number_of_history=10, number_of_most_interacted=5):
+def filter_by(username=None, tag=None, user_interaction='diggCount', number_of_history=10, number_of_most_interacted=5, api=None):
     if username is not None: 
         user_videos = api.by_username(username, number_of_history)
     else: 
@@ -31,30 +24,13 @@ def filter_by(username=None, tag=None, user_interaction='diggCount', number_of_h
 
 
 
-def download_videos(video_list, device_id):
+def download_videos(video_list, device_id, api):
     for i, video in enumerate(video_list):
         video_bytes = api.get_video_by_tiktok(video, custom_device_id=device_id)
         with open("video" + str(i) + ".mp4", "wb") as out:
             out.write(video_bytes)
 
 
-def concat_videos(): 
-    subprocess.call('./concatenate.sh')
 
-if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(description='Youtube Automation Program')
-    parser.add_argument('-t', "--hash_tag", type=str)
-    parser.add_argument('-u', '--user_name', type=str)  
-    parser.add_argument('-i', '--interaction_type', type=str)
-    parser.add_argument('-n', '--number_history', type=int)
-    parser.add_argument('-m', '--most_interacted', type=int)
-    args = parser.parse_args() 
-
-    api = TikTokApi.get_instance()
-    device_id = api.generate_device_id()
-
-    download_videos(filter_by(username=args.user_name, tag=args.hash_tag), device_id)
-    time.sleep(3) 
-    concat_videos()
 
