@@ -13,10 +13,9 @@ This will be a fully automated journey - perhaps even creating logos from automa
 
 
 
-full automation for the video downloads
-Need to automate; 
-- merging x completed 
-  - need to fix bugs 
-- uploading 
+- download x
+- concatenation x
+  - works with audio and for every video  
+- uploading
 - title 
 - thumbnail
