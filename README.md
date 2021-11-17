@@ -19,3 +19,9 @@ This will be a fully automated journey - perhaps even creating logos from automa
 - uploading
 - title 
 - thumbnail
+
+
+
+TODO: 
+- be able to mix shares with usernames 
+- be able to mix multiple tags 
