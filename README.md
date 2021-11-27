@@ -2,6 +2,8 @@
 Youtube automation - creating compilation videos 
 
 
+
+
 Steps: 
 1) A script to download files with a certain tag from TikTok 
 2) A script to merge the videos together 
@@ -23,5 +25,7 @@ This will be a fully automated journey - perhaps even creating logos from automa
 
 
 TODO: 
-- be able to mix shares with usernames 
-- be able to mix multiple tags 
+- fix usernames 
+- multiple tags 
+- multiple songs 
+
