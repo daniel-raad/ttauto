@@ -2,10 +2,10 @@
 Youtube automation - creating compilation videos 
 
 To create and use repo:
-venv venv 
-source venv/Scripts/activate
-pip install -r requirements.txt
-python main.py <tags>
+1) venv venv 
+2) source venv/Scripts/activate
+3) pip install -r requirements.txt
+4) python main.py <tags>
 
 
 Steps: 
