@@ -13,7 +13,7 @@ if __name__ == '__main__':
     parser.add_argument('-i', '--interaction_type', type=str)
     parser.add_argument('-n', '--number_history', type=int)
     parser.add_argument('-m', '--most_interacted', type=int)
-    parser.add_argument('-s', '--music_sound', type=str)
+    parser.add_argument('-s', '--music_sound', type=int)
     args = parser.parse_args() 
 
     attempts = 0
@@ -30,5 +30,4 @@ if __name__ == '__main__':
             break 
         except Exception as e: 
             attempts += 1 
-            print(e)
 
