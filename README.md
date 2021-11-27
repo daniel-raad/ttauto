@@ -1,7 +1,11 @@
 # YTAuto
 Youtube automation - creating compilation videos 
 
-
+To create and use repo:
+venv venv 
+source venv/Scripts/activate
+pip install -r requirements.txt
+python main.py <tags>
 
 
 Steps: 
