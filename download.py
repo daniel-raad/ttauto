@@ -1,11 +1,16 @@
 import operator
 
 
-def filter_by(username=None, tag=None, user_interaction='diggCount', number_of_history=10, number_of_most_interacted=5, api=None):
+def filter_by(username=None, tag=None, sound=None,  user_interaction='diggCount', number_of_history=30, number_of_most_interacted=10, api=None):
     if username is not None: 
-        user_videos = api.by_username(username, number_of_history)
+        print("with users")
+        user_videos = api.by_username(username=username, count=number_of_history)
+    elif tag is not None: 
+        user_videos = api.by_hashtag(hashtag=tag, count=number_of_history)
+    elif sound is not None: 
+        user_videos = api. by_sound(id=sound, count=number_of_history)
     else: 
-        user_videos = api.by_hashtag(tag, number_of_history)
+        user_videos = api.by_trending(count=number_of_history)
     
     interaction_list = [] 
     for video in user_videos:
