@@ -13,12 +13,11 @@ def filter_by(
     number_of_most_interacted: int = 10,
     api: TikTokApi = None,
 ):
-    if username is not None:
-        print("with users")
+    if not username in [None, ""]:
         user_videos = api.user(username=username).videos(count=number_of_history)
-    elif tag is not None:
+    elif not tag in [None, ""]:
         user_videos = api.hashtag(name=tag).videos(count=number_of_history)
-    elif sound is not None:
+    elif not sound in [None, ""]:
         user_videos = api.sound(id=sound).videos(count=number_of_history)
     else:
         user_videos = api.trending(count=number_of_history)
