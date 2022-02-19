@@ -1,33 +1,49 @@
 from download import download_videos, filter_by
 from concat import concat_videos
-import time 
+import time
 import argparse
 from TikTokApi import TikTokApi
 
 
-if __name__ == '__main__':
+def run_download(
+    user_name: str = None, hash_tag: str = None, music_sound: str = None
+) -> None:
+    attempts: int = 0
+    verify_fp = "verify_kzu8er2q_RX7qGRh6_tLFr_4XZa_BxGD_oaNmpdRX7yxi"
 
-    parser = argparse.ArgumentParser(description='Youtube Automation Program')
-    parser.add_argument('-t', "--hash_tag", type=str)
-    parser.add_argument('-u', '--user_name', type=str)  
-    parser.add_argument('-i', '--interaction_type', type=str)
-    parser.add_argument('-n', '--number_history', type=int)
-    parser.add_argument('-m', '--most_interacted', type=int)
-    parser.add_argument('-s', '--music_sound', type=int)
-    args = parser.parse_args() 
-
-    attempts = 0
-    verify_id = "verify_kwhqoq3n_gMReqQzN_qdAS_44P0_A2qM_g6UEOjeiiIo0"
-
-    while attempts < 50: 
+    while attempts < 50:
         try:
-            api = TikTokApi.get_instance(custom_verifyFp=verify_id, use_test_endpoints=True)
-            device_id = api.generate_device_id()
+            api: TikTokApi = TikTokApi(custom_verifyFp=verify_fp)
 
-            download_videos(filter_by(username=args.user_name, tag=args.hash_tag, sound=args.music_sound, api=api), device_id, api)
-            time.sleep(3) 
+            download_videos(
+                filter_by(
+                    username=user_name,
+                    tag=hash_tag,
+                    sound=music_sound,
+                    api=api,
+                )
+            )
+            time.sleep(3)
             concat_videos()
-            break 
-        except Exception as e: 
+            break
+        except Exception as e:
             print(e)
-            attempts += 1 
+            attempts += 1
+
+
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser(description="Youtube Automation Program")
+    parser.add_argument("-t", "--hash_tag", type=str)
+    parser.add_argument("-u", "--user_name", type=str)
+    parser.add_argument("-i", "--interaction_type", type=str)
+    parser.add_argument("-n", "--number_history", type=int)
+    parser.add_argument("-m", "--most_interacted", type=int)
+    parser.add_argument("-s", "--music_sound", type=int)
+    args = parser.parse_args()
+
+    run_download(
+        user_name=args.user_name,
+        hash_tag=args.hash_tag,
+        music_sound=args.music_sound,
+    )

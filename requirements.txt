@@ -1,3 +1,5 @@
 natsort==8.0.0
 moviepy==1.0.3
-TikTokApi==4.0.4
+TikTokApi==5.0.0
+Flask==2.0.3    
+requests==2.24.0 
