@@ -4,16 +4,18 @@ __pycache__/
 *$py.class
 
 # Stuff for mac
-.DS_Store
+/src/.DS_Store/
+/src/__pycache__/
 
 # Environments
 .env
 .venv
 env/
 venv/
+
 ENV/
 env.bak/
 venv.bak/
+src/upload.py-oauth2.json
 src/client_secrets.json
 src/my_secrets.py
-src/upload.py-oauth2.json
