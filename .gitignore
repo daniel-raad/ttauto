@@ -14,3 +14,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+src/client_secrets.json
+src/my_secrets.py
+src/upload.py-oauth2.json
