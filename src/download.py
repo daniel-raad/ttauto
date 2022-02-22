@@ -20,7 +20,7 @@ def filter_by(
     elif not sound in [None, ""]:
         user_videos = api.sound(id=sound).videos(count=number_of_history)
     else:
-        user_videos = api.trending(count=number_of_history)
+        user_videos = api.trending().videos(count=number_of_history)
 
     interaction_list: List[int] = []
     video_list = []
