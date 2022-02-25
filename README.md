@@ -15,6 +15,8 @@ To create and use repo:
   
   Run flask app: 
   1. cd src 
-  2. flask run 
- 
+  2. flask run
+  3. go to localhost:5000 
   
+  
+ 
