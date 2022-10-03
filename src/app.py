@@ -11,6 +11,8 @@ app.secret_key = b'_5#sssy2L"\n\xec]/'
 def index():
     if request.method == "POST":
         data = request.form
+        print(data)
+        run_download(hash_tag=data['hash_tag'])
         thread = threading.Thread(target=run_download, name="Downloader", kwargs=data)
         thread.start()
         return render_template("index.html")

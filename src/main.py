@@ -11,24 +11,24 @@ def run_download(
     attempts: int = 0
     verify_fp = "verify_kzu8er2q_RX7qGRh6_tLFr_4XZa_BxGD_oaNmpdRX7yxi"
 
-    while attempts < 50:
-        try:
-            api: TikTokApi = TikTokApi(custom_verifyFp=verify_fp)
+    # while attempts < 50:
+    #     try:
+    api: TikTokApi = TikTokApi(custom_verifyFp=verify_fp)
 
-            download_videos(
-                filter_by(
-                    username=user_name,
-                    tag=hash_tag,
-                    sound=music_sound,
-                    api=api,
-                )
-            )
-            time.sleep(3)
-            concat_videos()
-            break
-        except Exception as e:
-            print(e)
-            attempts += 1
+    download_videos(
+        filter_by(
+            username=user_name,
+            tag=hash_tag,
+            sound=music_sound,
+            api=api,
+        )
+    )
+    time.sleep(3)
+    concat_videos()
+        #     break
+        # except Exception as e:
+        #     print(e)
+        #     attempts += 1
 
 
 if __name__ == "__main__":
