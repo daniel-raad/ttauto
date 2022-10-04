@@ -6,20 +6,21 @@ import os
 from moviepy.editor import *
 from natsort import natsorted
 from google.cloud import storage
+from google.oauth2 import service_account
 
 
 
 
 def run_download(
-    request
+    hash_tag
 ) -> None:
     try: 
         # values = request.form
         # hash_tag = values['hash_tag']
-        hash_tag = request
         verify_fp = "verify_kzu8er2q_RX7qGRh6_tLFr_4XZa_BxGD_oaNmpdRX7yxi"
         api: TikTokApi = TikTokApi(custom_verifyFp=verify_fp)
-        os.chdir('/tmp')
+        print(os.getcwd())
+        os.chdir('./tmp')
         download_videos(
             filter_by(
                 tag=hash_tag,
@@ -40,7 +41,7 @@ def filter_by(
     sound: str = None,
     user_interaction: str = "diggCount",
     number_of_history: int = 30,
-    number_of_most_interacted: int = 10,
+    number_of_most_interacted: int = 2,
     api: TikTokApi = None,
 ):
     if not username in [None, ""]:
@@ -109,26 +110,16 @@ def concat_videos(file_name):
     final_clip_with_audio = final_clip.set_audio(audioclip)
 
     final_clip_with_audio.write_videofile(
-        filename="./output.mp4",
+        filename="./" + file_name + ".mp4",
         temp_audiofile="temp-audio.m4a",
-        fps=None,
         codec="libx264",
         audio_codec="aac",
         bitrate=None,
         audio=True,
-        audio_fps=44100,
-        preset="medium",
-        audio_nbytes=4,
-        audio_bitrate=None,
-        audio_bufsize=2000,
         rewrite_audio=True,
-        verbose=True,
-        threads=None,
-        ffmpeg_params=None,
     )
-
-    upload_blob("video_bucket_function_store", 'output.mp4', 'output.mp4')
     clean_up(audio_files=audio_files)
+    upload_blob("video_bucket_function_store", file_name + ".mp4", file_name + ".mp4")
 
 
 def clean_up(audio_files):
@@ -146,7 +137,8 @@ def convert_video_to_audio_moviepy(video_file, output_ext="mp3"):
 
 
 def upload_blob(gcloud_bucket_name, source_file_name, destination_blob_name): 
-    storage_client = storage.Client()
+    credentials = service_account.Credentials.from_service_account_file("../tiktokapikey.json")
+    storage_client = storage.Client(project='tiktokapi-364416', credentials=credentials)
     bucket = storage_client.get_bucket(gcloud_bucket_name)
     blob = bucket.blob(destination_blob_name)
     blob.upload_from_filename(source_file_name)
@@ -156,5 +148,5 @@ def upload_blob(gcloud_bucket_name, source_file_name, destination_blob_name):
         destination_blob_name))
 
 
-if __name__ == '__main__':
-    run_download(sys.argv[1])
+if __name__ == "__main__":
+    run_download('food')

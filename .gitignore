@@ -19,3 +19,7 @@ venv.bak/
 src/upload.py-oauth2.json
 src/client_secrets.json
 src/my_secrets.py
+
+
+cloud_functions/tiktokapikey.json
+cloud_functions/tmp
